@@ -44,6 +44,8 @@ public class RobotContainer {
     private Hopper m_hopper;
     // private Climber m_climber;
 
+    public ConstantsTest test; 
+
     private NAR_Joystick m_leftStick;
     private NAR_Joystick m_rightStick;
 
@@ -99,12 +101,13 @@ public class RobotContainer {
     private boolean driveHalfSpeed = false;
 
     public RobotContainer() {
-        ConstantsInt.initTempConstants();
         m_drive = NAR_Drivetrain.getInstance();
         m_shooter = Shooter.getInstance();
         // m_intake = Intake.getInstance();
         m_hopper = Hopper.getInstance();
         // m_climber = Climber.getInstance();
+
+        test = new ConstantsTest(ConstantsInt.ShooterConstants.HIGH_kD);
 
         //Enable all PIDSubsystems so that useOutput runs
         m_shooter.enable();

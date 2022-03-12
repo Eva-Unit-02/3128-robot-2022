@@ -22,24 +22,26 @@ import frc.team3128.subsystems.ConstantsTest;
 public class Robot extends TimedRobot {
 
     public static RobotContainer m_robotContainer = new RobotContainer();
-    private ConstantsTest test = new ConstantsTest(ConstantsInt.ShooterConstants.HIGH_kD);
     private Command m_autonomousCommand;
-    // private Thread dashboardUpdateThread;
 
-    // private ArrayList<Double> battVoltages = new ArrayList<Double>();
-    // public static double voltageRollingAvg = 0;
+
+    public static void constructRobot(){
+        m_robotContainer = new RobotContainer();
+    }
 
     @Override
     public void robotInit(){
         LiveWindow.disableAllTelemetry();
+        ConstantsInt.initTempConstants();
         //CameraServer.startAutomaticCapture();
     }
 
     @Override
     public void robotPeriodic(){
         m_robotContainer.updateDashboard();
-        SmartDashboard.putNumber("Test Number",ConstantsInt.ShooterConstants.HIGH_kD);
-
+        SmartDashboard.putNumber("Real Number",ConstantsInt.ShooterConstants.HIGH_kD);
+        SmartDashboard.putNumber("Subsytem Number", m_robotContainer.test.getNum());
+    
         // if(battVoltages.size() == 100) {
         //     battVoltages.remove(0);
         // }
