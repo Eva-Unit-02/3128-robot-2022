@@ -178,7 +178,7 @@ public class NarwhalDashboard extends WebSocketServer {
                         newConstant.put("value", value);
     
                         catArr.add(newConstant);
-                        Log.info("Narwhal Dashboard", "Constant Of "+newConstant.toJSONString());
+                        //Log.info("Narwhal Dashboard", "Constant Of "+newConstant.toJSONString());
                         }
                         catch(IllegalAccessException e) {
                             continue;

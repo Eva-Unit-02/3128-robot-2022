@@ -23,13 +23,13 @@ public class ConstantsInt extends Constants {
     public static class DriveConstants extends Constants.DriveConstants {}
     public static class ClimberConstants extends Constants.ClimberConstants {}
     public static class ShooterConstants extends Constants.ShooterConstants {
-        public static double LOW_kP;
-        public static double LOW_kI;
-        public static double LOW_kD;
-        public static double HIGH_kP;
-        public static double HIGH_kI;
-        public static double HIGH_kD; 
-        public static double kF; 
+        public static Double LOW_kP;
+        public static Double LOW_kI;
+        public static Double LOW_kD;
+        public static Double HIGH_kP;
+        public static Double HIGH_kI;
+        public static Double HIGH_kD; 
+        public static Double kF; 
 
     }
     public static class HopperConstants extends Constants.HopperConstants {}
@@ -97,9 +97,12 @@ public class ConstantsInt extends Constants {
                     Object toUse = value;
                     Log.info("Constants Interface", field.getType().toString());
                     if(field.getType().getSuperclass() != null && field.getType().getSuperclass().equals(Number.class)) {
+                        
                         toUse = parseNumber(value, field.getType());
+                        Log.info("Constants Interface", toUse.toString());
                     }
                     else if(primitiveNumbers.contains(field.getType())) {
+                        Log.info("Constants Interface", "Here2");
                         toUse = parseNumber(value, field.getType());
                     }
                     if(toUse == null) {
