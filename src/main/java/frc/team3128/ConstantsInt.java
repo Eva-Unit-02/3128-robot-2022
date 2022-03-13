@@ -23,14 +23,7 @@ public class ConstantsInt extends Constants {
     public static class DriveConstants extends Constants.DriveConstants {}
     public static class ClimberConstants extends Constants.ClimberConstants {}
     public static class ShooterConstants extends Constants.ShooterConstants {
-        public static double LOW_kP;
-        public static double LOW_kI;
-        public static double LOW_kD;
-        public static double HIGH_kP;
-        public static double HIGH_kI;
         public static double HIGH_kD; 
-        public static double kF; 
-
     }
     public static class HopperConstants extends Constants.HopperConstants {}
     public static class IntakeConstants extends Constants.IntakeConstants {}
@@ -74,9 +67,10 @@ public class ConstantsInt extends Constants {
                     Log.info("Constants Interface", "Constants Field does not Exist: "+field.getName());
                 } catch (SecurityException e) {
                     Log.info("Constants Interface", "Reflection API blocked by security manager");
-                } catch (IllegalArgumentException e) {} 
-                catch (IllegalAccessException e) {
-                    Log.info("Constants Interface", "Skipping, Constant set to final: "+field.getName());
+                } catch (IllegalArgumentException e) {
+
+                } catch (IllegalAccessException e) {
+                   Log.info("Constants Interface", "Skipping, Constant set to final: "+field.getName());
                 }
             }
         }
@@ -95,22 +89,19 @@ public class ConstantsInt extends Constants {
             if(field.getName().equals(name)) {
                 try {
                     Object toUse = value;
-                    Log.info("Constants Interface", field.getType().toString());
                     if(field.getType().getSuperclass() != null && field.getType().getSuperclass().equals(Number.class)) {
-                        
                         toUse = parseNumber(value, field.getType());
-                        Log.info("Constants Interface", toUse.toString());
                     }
                     else if(primitiveNumbers.contains(field.getType())) {
-                        Log.info("Constants Interface", "Here2");
                         toUse = parseNumber(value, field.getType());
                     }
                     if(toUse == null) {
                         throw new IllegalArgumentException("Invalid value for constant");
                     }
                     
-                    Robot.constructRobot();
                     field.set(null, toUse);
+                    Robot.constructRobot();
+                    
                 } catch (IllegalAccessException e) {
                     Log.info("Constants Interface", "Constant Change Operation Blocked");
                     e.printStackTrace();

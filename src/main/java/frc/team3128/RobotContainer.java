@@ -44,8 +44,6 @@ public class RobotContainer {
     private Hopper m_hopper;
     // private Climber m_climber;
 
-    public ConstantsTest test; 
-
     private NAR_Joystick m_leftStick;
     private NAR_Joystick m_rightStick;
 
@@ -106,8 +104,6 @@ public class RobotContainer {
         // m_intake = Intake.getInstance();
         m_hopper = Hopper.getInstance();
         // m_climber = Climber.getInstance();
-
-        test = new ConstantsTest(ConstantsInt.ShooterConstants.HIGH_kD);
 
         //Enable all PIDSubsystems so that useOutput runs
         m_shooter.enable();
@@ -279,7 +275,7 @@ public class RobotContainer {
                 // Get a path from the string specified in trajJson, and load it into trajectory[i]
                 Path path = Filesystem.getDeployDirectory().toPath().resolve("paths").resolve(trajJson[i]);
                 trajectory[i] = TrajectoryUtil.fromPathweaverJson(path);
-                Log.info("InitAutos", "Trajectory" + i + " = path" + path.toString());
+                //Log.info("InitAutos", "Trajectory" + i + " = path" + path.toString());
             }
         } catch (IOException ex) {
             DriverStation.reportError("IOException opening trajectory:", ex.getStackTrace());

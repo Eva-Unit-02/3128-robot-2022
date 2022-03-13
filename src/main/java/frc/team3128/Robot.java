@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.team3128.subsystems.ConstantsTest;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -39,8 +38,6 @@ public class Robot extends TimedRobot {
     @Override
     public void robotPeriodic(){
         m_robotContainer.updateDashboard();
-        SmartDashboard.putNumber("Real Number",ConstantsInt.ShooterConstants.HIGH_kD);
-        SmartDashboard.putNumber("Subsytem Number", m_robotContainer.test.getNum());
     
         // if(battVoltages.size() == 100) {
         //     battVoltages.remove(0);
