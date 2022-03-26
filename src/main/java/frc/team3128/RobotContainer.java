@@ -716,6 +716,8 @@ public class RobotContainer {
                             retractHopperAndShootCmdLL(4000)
         );
 
+        auto_5ball180 = new Sequen
+
         // Setup auto-selector
         NarwhalDashboard.addAuto("1 Ball", auto_1Ball);
         NarwhalDashboard.addAuto("2 Ball Bottom", auto_2BallBot);
